@@ -24,26 +24,7 @@ function Home() {
   const handLandmarkerRef = useRef<HandLandmarker | null>(null)
   const frameRef = useRef(0)
   const [isPeace, setIsPeace] = useState(false)
-  const [photo, setPhoto] = useState<string | null>(null)
   const [status, setStatus] = useState('Loading hand detector...')
-
-  function capturePhoto() {
-    const video = videoRef.current
-    if (!video?.videoWidth) return
-
-    const canvas = document.createElement('canvas')
-    canvas.width = video.videoWidth
-    canvas.height = video.videoHeight
-
-    const context = canvas.getContext('2d')
-    if (!context) return
-
-    context.filter = isPeace ? 'blur(4px)' : 'none'
-    context.translate(canvas.width, 0)
-    context.scale(-1, 1)
-    context.drawImage(video, 0, 0, canvas.width, canvas.height)
-    setPhoto(canvas.toDataURL('image/png'))
-  }
 
   useEffect(() => {
     let stream: MediaStream | null = null
@@ -148,39 +129,16 @@ function Home() {
           </div>
 
           <div className={`w-full aspect-4/3 bg-white/60 rounded-[1.5rem] overflow-hidden border-4 shadow-inner relative transition-all duration-300 ${isPeace ? 'border-rose-300 shadow-rose-300/60' : 'border-white'}`}>
-            {photo ? (
-              <img src={photo} alt="Captured Foto Kita" className="h-full w-full object-cover" />
-            ) : (
-              <video
-                ref={videoRef}
-                className={`h-full w-full object-cover scale-x-[-1] transition-[filter] duration-300 ${isPeace ? 'blur-sm' : ''}`}
-                muted
-                playsInline
-                autoPlay
-              />
-            )}
+            <video
+              ref={videoRef}
+              className={`h-full w-full object-cover scale-x-[-1] transition-[filter] duration-300 ${isPeace ? 'blur-sm' : ''}`}
+              muted
+              playsInline
+              autoPlay
+            />
             <div className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-black shadow transition-colors ${isPeace ? 'bg-rose-500 text-white' : 'bg-white/80 text-rose-500'}`}>
-              {photo ? 'Captured!' : status}
+              {status}
             </div>
-          </div>
-
-          <div className="mt-4 flex justify-center gap-2">
-            <button
-              type="button"
-              onClick={photo ? () => setPhoto(null) : capturePhoto}
-              className="rounded-full bg-white px-5 py-2.5 text-sm font-black text-rose-500 shadow-lg shadow-rose-300/30 ring-2 ring-white/70 transition active:scale-95"
-            >
-              {photo ? 'Retake' : 'Capture'}
-            </button>
-            {photo ? (
-              <a
-                href={photo}
-                download="foto-kita.png"
-                className="rounded-full bg-rose-500 px-5 py-2.5 text-sm font-black text-white shadow-lg shadow-rose-400/40 ring-2 ring-white/70 transition active:scale-95"
-              >
-                Download
-              </a>
-            ) : null}
           </div>
 
           <div className="w-full text-center mt-5 sm:mt-6 flex flex-col items-center gap-0.5">
