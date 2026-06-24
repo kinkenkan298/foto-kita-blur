@@ -560,6 +560,16 @@ function Home() {
       grad.addColorStop(1, '#ffccd5')
       ctx.fillStyle = grad
       ctx.fillRect(0, 0, w, h)
+
+      // Draw cute yellow stars
+      ctx.save()
+      for (let i = 0; i < 15; i++) {
+        const sx = Math.random() * w
+        const sy = Math.random() * h
+        const size = 6 + Math.random() * 8
+        drawStarShape(ctx, sx, sy, 5, size, size / 2.2, '#fff6a3')
+      }
+      ctx.restore()
     } else if (frame === 'hearts') {
       ctx.fillStyle = '#fff0f5'
       ctx.fillRect(0, 0, w, h)
@@ -573,6 +583,16 @@ function Home() {
         ctx.lineTo(i + h, h)
         ctx.stroke()
       }
+
+      // Scatter cute hearts
+      ctx.save()
+      for (let i = 0; i < 12; i++) {
+        const hx = Math.random() * w
+        const hy = Math.random() * h
+        const hSize = 12 + Math.random() * 10
+        drawHeartShape(ctx, hx, hy, hSize, hSize, '#ffb6c1')
+      }
+      ctx.restore()
     } else if (frame === 'retro') {
       // Neon/y2k gradient
       const grad = ctx.createLinearGradient(0, 0, w, h)
@@ -581,6 +601,15 @@ function Home() {
       grad.addColorStop(1, '#7b1fa2')
       ctx.fillStyle = grad
       ctx.fillRect(0, 0, w, h)
+
+      // Draw starry circles
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)'
+      ctx.lineWidth = 2
+      for (let i = 0; i < 8; i++) {
+        ctx.beginPath()
+        ctx.arc(Math.random() * w, Math.random() * h, 20 + Math.random() * 40, 0, Math.PI * 2)
+        ctx.stroke()
+      }
     }
   }
 
@@ -642,6 +671,14 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-pastel-grid py-6 px-4 relative flex flex-col items-center">
+      {/* Decorative Floating Elements */}
+      <div className="absolute top-12 left-10 text-rose-300 animate-float-heart-1 text-3xl pointer-events-none">💖</div>
+      <div className="absolute top-28 right-12 text-rose-300 animate-float-heart-2 text-2xl pointer-events-none">🌸</div>
+      <div className="absolute bottom-24 left-8 text-rose-300 animate-float-heart-3 text-3xl pointer-events-none">🧸</div>
+      <div className="absolute top-1/2 left-4 text-yellow-300 animate-twinkle-1 text-3xl pointer-events-none">⭐</div>
+      <div className="absolute bottom-40 right-10 text-yellow-300 animate-twinkle-2 text-2xl pointer-events-none">✨</div>
+      <div className="absolute top-16 right-1/4 text-yellow-300 animate-twinkle-3 text-xl pointer-events-none">✨</div>
+
       {/* Main Container */}
       <div className="w-full max-w-md md:max-w-4xl flex flex-col md:flex-row gap-6 items-start justify-center relative z-10">
         
@@ -900,7 +937,25 @@ function Home() {
                 layout === 'single' ? 'w-[300px] p-5 pt-5 pb-9' : ''
               }`}
             >
-              {/* Clean styled frame backgrounds without starry/heart overlays */}
+              {/* Optional stars/hearts drawn with CSS for starry/heart backgrounds */}
+              {frame === 'starry' && (
+                <div className="absolute inset-0 pointer-events-none opacity-40">
+                  <div className="absolute top-[10%] left-[8%] text-xs">⭐</div>
+                  <div className="absolute top-[25%] right-[10%] text-sm">⭐</div>
+                  <div className="absolute top-[50%] left-[12%] text-xs">⭐</div>
+                  <div className="absolute top-[70%] right-[15%] text-xs">⭐</div>
+                  <div className="absolute bottom-[15%] left-[25%] text-sm">⭐</div>
+                </div>
+              )}
+
+              {frame === 'hearts' && (
+                <div className="absolute inset-0 pointer-events-none opacity-30">
+                  <div className="absolute top-[8%] left-[20%] text-xs">💖</div>
+                  <div className="absolute top-[35%] right-[12%] text-xs">💖</div>
+                  <div className="absolute top-[55%] left-[8%] text-xs">💖</div>
+                  <div className="absolute bottom-[20%] right-[25%] text-xs">💖</div>
+                </div>
+              )}
 
               {/* Layout: STRIP (4-cuts stacked) */}
               {layout === 'strip' && (
@@ -1030,7 +1085,13 @@ function Home() {
               </div>
             </div>
 
-            {/* Overlap stickers removed for clean frame aesthetic */}
+            {/* Overlap stickers to represent Gen-Z decor style */}
+            <div className="absolute top-2 -left-3 bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-md text-[9px] font-bold shadow-md rotate-[-12deg] border border-yellow-200 pointer-events-none select-none">
+              Gen-Z Vibes! ⭐
+            </div>
+            <div className="absolute bottom-16 -right-4 bg-pink-100 text-pink-700 px-2.5 py-0.5 rounded-md text-[9px] font-bold shadow-md rotate-[15deg] border border-pink-200 pointer-events-none select-none">
+              CUTE VIBES 💖
+            </div>
           </div>
 
           {/* Action buttons */}
