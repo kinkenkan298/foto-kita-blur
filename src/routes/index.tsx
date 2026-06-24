@@ -95,7 +95,7 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-pastel-grid flex flex-col items-center justify-center overflow-hidden px-4 py-8 relative">
-      <div className="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-rose-200/60 via-pink-100/40 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-72 bg-linear-to-b from-rose-200/60 via-pink-100/40 to-transparent blur-3xl pointer-events-none" />
       <div className="absolute top-12 left-10 text-rose-300 animate-float-heart-1 text-3xl pointer-events-none">💖</div>
       <div className="absolute top-28 right-12 text-rose-300 animate-float-heart-2 text-2xl pointer-events-none">🌸</div>
       <div className="absolute bottom-24 left-8 text-rose-300 animate-float-heart-3 text-3xl pointer-events-none">🧸</div>
@@ -104,10 +104,10 @@ function Home() {
       <div className="absolute top-16 right-1/4 text-yellow-300 animate-twinkle-3 text-xl pointer-events-none">✨</div>
 
       <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl z-10">
-        <div className="absolute -top-3 -left-3 bg-yellow-100 text-yellow-700 px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-md rotate-[-12deg] border border-yellow-200 pointer-events-none select-none z-20">
-          {isPeace ? 'BLUR MODE! ✌️' : 'Gen-Z Vibes! ⭐'}
+        <div className="absolute -top-3 -left-3 bg-yellow-100 text-yellow-700 px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-md -rotate-12 border border-yellow-200 pointer-events-none select-none z-20">
+          {isPeace ? 'BLUR MODE! ✌️' : 'NO BLUR ! ⭐'}
         </div>
-        <div className="absolute bottom-20 -right-3 bg-pink-100 text-pink-700 px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-md rotate-[15deg] border border-pink-200 pointer-events-none select-none z-20">
+        <div className="absolute bottom-20 -right-3 bg-pink-100 text-pink-700 px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-md rotate-15 border border-pink-200 pointer-events-none select-none z-20">
           CUTE VIBES 💖
         </div>
 
@@ -128,7 +128,7 @@ function Home() {
             <div className="absolute top-[35%] left-[7%] text-[10px] animate-float-heart-1">💖</div>
           </div>
 
-          <div className={`w-full aspect-4/3 bg-white/60 rounded-[1.5rem] overflow-hidden border-4 shadow-inner relative transition-all duration-300 ${isPeace ? 'border-rose-300 shadow-rose-300/60' : 'border-white'}`}>
+          <div className={`w-full aspect-4/3 bg-white/60 rounded-3xl overflow-hidden border-4 shadow-inner relative transition-all duration-300 ${isPeace ? 'border-rose-300 shadow-rose-300/60' : 'border-white'}`}>
             <video
               ref={videoRef}
               className={`h-full w-full object-cover scale-x-[-1] transition-[filter] duration-300 ${isPeace ? 'blur-sm' : ''}`}
