@@ -1,17 +1,135 @@
-
 @import "tailwindcss";
 
-* {
-  box-sizing: border-box;
+@layer base {
+  body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #fff0f5; /* Lavender blush / very soft pastel pink */
+    color: #333;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka', sans-serif;
+  }
 }
 
-html,
-body,
-#app {
-  min-height: 100%;
+/* Custom Grid Background with soft pink dots */
+.bg-pastel-grid {
+  background-color: #fff0f6;
+  background-image: 
+    radial-gradient(#ffd1dc 1.5px, transparent 1.5px),
+    radial-gradient(#ffd1dc 1.5px, #fff0f6 1.5px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  animation: gridMove 20s linear infinite;
 }
 
-body {
-  margin: 0;
+@keyframes gridMove {
+  0% {
+    background-position: 0 0, 15px 15px;
+  }
+  100% {
+    background-position: 30px 30px, 45px 45px;
+  }
 }
 
+/* Glassmorphism Panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(255, 182, 193, 0.15);
+}
+
+/* Heart Float Animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(10px) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-80px) scale(1.2) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-heart-1 {
+  animation: floatUp 4s ease-in-out infinite;
+}
+
+.animate-float-heart-2 {
+  animation: floatUp 5s ease-in-out infinite 1.5s;
+}
+
+.animate-float-heart-3 {
+  animation: floatUp 6s ease-in-out infinite 3s;
+}
+
+/* Twinkling Star Animation */
+@keyframes twinkle {
+  0%, 100% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 4px rgba(255, 223, 0, 0.6));
+  }
+}
+
+.animate-twinkle-1 {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-twinkle-2 {
+  animation: twinkle 4s ease-in-out infinite 1s;
+}
+
+.animate-twinkle-3 {
+  animation: twinkle 5s ease-in-out infinite 2.5s;
+}
+
+/* Flash Screen Effect */
+.camera-flash {
+  animation: flashEffect 0.4s ease-out forwards;
+}
+
+@keyframes flashEffect {
+  0% {
+    opacity: 1;
+    background-color: white;
+  }
+  100% {
+    opacity: 0;
+    background-color: transparent;
+    pointer-events: none;
+  }
+}
+
+/* Custom Scrollbar for cute layout selector */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 192, 203, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 105, 180, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 105, 180, 0.5);
+}
+
+/* Dreamy Glow / Soft Blur filter */
+.filter-dreamy-glow {
+  filter: brightness(1.05) contrast(0.95) saturate(1.1) blur(0.5px);
+  mix-blend-mode: normal;
+}

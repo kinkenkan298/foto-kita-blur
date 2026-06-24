@@ -12,13 +12,30 @@ export const Route = createRootRoute({
       },
       {
         name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
+        content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'FotoKita ✨ - Cute Gen-Z Photobox',
       },
+      {
+        name: 'description',
+        content: 'Bikin foto strip photobox gemes ala Gen-Z dengan warna pastel pink, bintang-bintang, dan hati! Gratis dan langsung unduh.',
+      }
     ],
     links: [
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossOrigin: '',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@300..900&display=swap',
+      },
       {
         rel: 'stylesheet',
         href: appCss,
