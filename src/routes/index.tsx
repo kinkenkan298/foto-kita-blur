@@ -113,7 +113,8 @@ function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-pastel-grid flex flex-col items-center justify-center px-4 py-8 relative">
+    <div className="min-h-screen bg-pastel-grid flex flex-col items-center justify-center overflow-hidden px-4 py-8 relative">
+      <div className="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-rose-200/60 via-pink-100/40 to-transparent blur-3xl pointer-events-none" />
       <div className="absolute top-12 left-10 text-rose-300 animate-float-heart-1 text-3xl pointer-events-none">💖</div>
       <div className="absolute top-28 right-12 text-rose-300 animate-float-heart-2 text-2xl pointer-events-none">🌸</div>
       <div className="absolute bottom-24 left-8 text-rose-300 animate-float-heart-3 text-3xl pointer-events-none">🧸</div>
@@ -129,7 +130,7 @@ function Home() {
           CUTE VIBES 💖
         </div>
 
-        <div className="bg-[#ffd1dc] rounded-3xl shadow-2xl overflow-hidden p-5 sm:p-6 md:p-8 relative">
+        <div className="bg-[#ffd1dc]/90 rounded-[2rem] shadow-[0_30px_80px_rgba(244,114,182,0.35)] overflow-hidden p-5 sm:p-6 md:p-8 relative ring-4 ring-white/70 backdrop-blur">
           <div className="absolute inset-0 pointer-events-none opacity-40">
             <div className="absolute top-[6%] left-[6%] text-sm animate-twinkle-1">⭐</div>
             <div className="absolute top-[14%] right-[8%] text-xs animate-twinkle-2">⭐</div>
@@ -146,7 +147,7 @@ function Home() {
             <div className="absolute top-[35%] left-[7%] text-[10px] animate-float-heart-1">💖</div>
           </div>
 
-          <div className="w-full aspect-4/3 bg-white/60 rounded-2xl overflow-hidden border-4 border-white shadow-inner relative">
+          <div className={`w-full aspect-4/3 bg-white/60 rounded-[1.5rem] overflow-hidden border-4 shadow-inner relative transition-all duration-300 ${isPeace ? 'border-rose-300 shadow-rose-300/60' : 'border-white'}`}>
             {photo ? (
               <img src={photo} alt="Captured Foto Kita" className="h-full w-full object-cover" />
             ) : (
@@ -158,7 +159,7 @@ function Home() {
                 autoPlay
               />
             )}
-            <div className="absolute left-3 top-3 rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-rose-500 shadow">
+            <div className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-black shadow transition-colors ${isPeace ? 'bg-rose-500 text-white' : 'bg-white/80 text-rose-500'}`}>
               {photo ? 'Captured!' : status}
             </div>
           </div>
@@ -167,7 +168,7 @@ function Home() {
             <button
               type="button"
               onClick={photo ? () => setPhoto(null) : capturePhoto}
-              className="rounded-full bg-white px-4 py-2 text-sm font-bold text-rose-500 shadow-md active:scale-95"
+              className="rounded-full bg-white px-5 py-2.5 text-sm font-black text-rose-500 shadow-lg shadow-rose-300/30 ring-2 ring-white/70 transition active:scale-95"
             >
               {photo ? 'Retake' : 'Capture'}
             </button>
@@ -175,7 +176,7 @@ function Home() {
               <a
                 href={photo}
                 download="foto-kita.png"
-                className="rounded-full bg-rose-500 px-4 py-2 text-sm font-bold text-white shadow-md active:scale-95"
+                className="rounded-full bg-rose-500 px-5 py-2.5 text-sm font-black text-white shadow-lg shadow-rose-400/40 ring-2 ring-white/70 transition active:scale-95"
               >
                 Download
               </a>
@@ -183,7 +184,7 @@ function Home() {
           </div>
 
           <div className="w-full text-center mt-5 sm:mt-6 flex flex-col items-center gap-0.5">
-            <span className="font-bold text-lg sm:text-xl tracking-wide text-rose-500">
+            <span className="font-black text-2xl sm:text-3xl tracking-wide text-rose-500 drop-shadow-sm">
               Foto Kita ✨
             </span>
             <span className="text-xs sm:text-sm italic font-semibold text-rose-400">
